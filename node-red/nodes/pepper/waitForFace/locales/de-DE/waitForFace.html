@@ -1,0 +1,19 @@
+<script type="text/markdown" data-help-name="Wait for face">
+Wartet bis der Roboter das Gesicht von einer Person gefunden hat.
+
+### Ausgänge
+1. Gesicht erkannt 
+: payload ( ) : Keine zusätzlichen Daten
+2. Zeitüberschreitung 
+:payload (string) : Text "timeout" 
+
+### Einstellungen
+: Zeitüberschreitung (number) : Zeit in Sekunden, nach der die Zeitüberschreitung (2. Ausgang) ausgelöst wird, sofern vorher kein Gesicht erkannt wurde.
+
+### Details
+Der Roboter bewegt seinen Kopf zuerst in eine neutrale Ausgangsposition (schaut gerade nach vorn).
+Anschließend wird die Gesichterkennung gestartet.
+
+**Wichtig:** Schlechte Lichtverhältnisse beeinträchtigen die Erkennungsgenauigkeit. Zudem werden Menschen
+mit Masken nur schlecht erkannt.
+</script>

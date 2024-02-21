@@ -1,0 +1,61 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Switch LED", {
+        category: "Pepper",
+        color: "#3FADB5",
+        defaults: {
+            power: {
+                value: "on"
+            },
+            group: {
+                value: "AllLeds"
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-lightbulb-o",
+        label: () => {
+            return this.name;
+        },
+        oneditprepare: function () {
+            const node = this;
+
+            $("#node-input-power").typedInput({
+                types: [
+                    {
+                        value: "power",
+                        options: [
+                            { value: "on", label: node._(node.type + ".powerStates.on") },
+                            { value: "off", label: node._(node.type + ".powerStates.off") },
+                        ]
+                    }
+                ]
+            });
+            $("#node-input-group").typedInput({
+                types: [
+                    {
+                        value: "group",
+                        options: [
+                            { value: "AllLeds", label: node._(node.type + ".groups.allLeds") },
+                            { value: "ChestLeds", label: node._(node.type + ".groups.chestLeds") },
+                            { value: "EarLeds", label: node._(node.type + ".groups.earLeds") },
+                            { value: "FaceLeds", label: node._(node.type + ".groups.faceLeds") }
+                        ]
+                    }
+                ]
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Switch LED">
+    <div class="form-row">
+        <label for="node-input-power"><i class="fa fa-power-off"></i> <span data-i18n="Switch LED.power"></span>:</label>
+        <input type="text" id="node-input-power">
+    </div>    
+    <div class="form-row">
+        <label for="node-input-group"><i class="fa fa-object-group"></i> <span data-i18n="Switch LED.ledGroup"></span>:</label>
+        <input type="text" id="node-input-group">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Switch LED"></script>

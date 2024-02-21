@@ -1,0 +1,11 @@
+{
+    "Wait for QR code": {
+        "allowAllInputs": "Allow all inputs",
+        "connectionError": "Connection error",
+        "inputHint": "in seconds (0 = never)",
+        "qrDetectedOutput": "QR code detected",
+        "timeout": "Timeout",
+        "timeoutOutput": "Timeout",
+        "waiting": "Waiting for QR code"
+    }
+}

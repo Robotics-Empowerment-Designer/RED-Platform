@@ -1,0 +1,47 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Move", {
+        category: "Pepper",
+        color: "#FFCC66",
+        defaults: {
+            posX: {
+                value: 0,
+                required: true
+            },
+            posY: {
+                value: 0,
+                required: true
+            }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: function (index) {
+            const node = this;
+
+            switch (index) {
+                case 0: return this._(node.type + ".movingSuccessOutput");
+                case 1: return this._(node.type + ".movingFailedOutput");
+            }
+        },
+        icon: "font-awesome/fa-location-arrow",
+        label: () => {
+            return this.name;
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Move">
+    <div class="form-row">
+        <span data-i18n="Move.info"></span><br>
+        <span data-i18n="Move.info2"></span>
+    </div>
+    <div class="form-row">
+        <label for="node-input-x">X (<span data-i18n="Move.inMeters"></span>):</label>
+        <input type="number" id="node-input-posX" min="-10" max="10" step="0.1" placeholder="X">
+    </div>
+    <div class="form-row">
+        <label for="node-input-y">Y (<span data-i18n="Move.inMeters"></span>):</label>
+        <input type="number" id="node-input-posY" min="-10" max="10" step="0.1" placeholder="Y">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Move"></script>

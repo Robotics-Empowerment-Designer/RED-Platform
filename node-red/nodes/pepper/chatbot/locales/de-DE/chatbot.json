@@ -1,0 +1,8 @@
+{
+    "Chatbot": {
+        "apiKeyEmpty": "OpenAI API Schlüssel ist leer",
+        "emptyInput": "Eingabe ist leer",
+        "text": "Text",
+        "waitingForAnswer": "Warte auf Antwort"
+    }
+}

@@ -1,0 +1,43 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Wait for face", {
+        category: "Pepper",
+        color: "#A6BBCF",
+        defaults: {
+            timeout: {
+                value: null
+            },
+            outputs: {
+                value: 1
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        outputLabels: function (index) {
+            switch (index) {
+                case 0: return this._(this.type + ".faceDetectedOutput");
+                case 1: return this._(this.type + ".timeoutOutput");
+            }
+        },
+        icon: "font-awesome/fa-eye",
+        label: () => {
+            return this.name;
+        },
+        oneditsave: function () {
+            const node = this;
+
+            setTimeout(function () {
+                node.outputs = node.timeout !== null && node.timeout > 0 ? 2 : 1;
+            }, 0);
+        },
+
+    });
+</script>
+
+<script type="text/html" data-template-name="Wait for face">
+    <div class="form-row">
+        <label for="node-input-timeout" style="overflow-wrap: break-word;"><i class="fa fa-clock-o"></i> <span data-i18n="Wait for face.timeout"></label>
+        <input type="number" id="node-input-timeout" min="0" data-i18n="[placeholder]Wait for face.inputHint">    
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Wait for face"></script>

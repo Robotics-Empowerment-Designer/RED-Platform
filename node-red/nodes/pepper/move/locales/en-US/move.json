@@ -1,0 +1,12 @@
+{
+    "Move": {
+        "connectionError": "Connection error",
+        "info": "Positive X values make the robot move forward.",
+        "info2": "Positive Y values make the robot move to the left.",
+        "inMeters": "in meters",
+        "moving": "Moving",
+        "movingFailedOutput": "If unsuccessful",
+        "movingInterrupted": "Moving interrupted",
+        "movingSuccessOutput": "If successful"
+    }
+}

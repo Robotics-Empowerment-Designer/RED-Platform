@@ -1,0 +1,68 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Get skin temperature", {
+        category: "Pepper",
+        color: "#FDD0A2",
+        defaults: {
+            // resultMode: {
+            //     value: "max"
+            // },
+            tempThreshold: {
+                value: 30,
+                required: true
+            }
+        },
+        inputs: 1,
+        outputs: 2,
+        outputLabels: function (index) {
+            const node = this;
+
+            switch (index) {
+                case 0: return this._(node.type + ".upperThreshold").replace("{}", this.tempThreshold);
+                case 1: return this._(node.type + ".lowerThreshold").replace("{}", this.tempThreshold)
+            }
+        },
+        icon: "font-awesome/fa-thermometer-half",
+        label: () => {
+            return this.name;
+        },
+        // oneditprepare: () => {
+        //     $("#node-input-resultMode").typedInput({
+        //         types: [
+        //             {
+        //                 value: "resultMode",
+        //                 options: [
+        //                     { value: "max", label: "Max." },
+        //                     { value: "min", label: "Min." },
+        //                     { value: "avg", label: "Avg." }
+        //                 ]
+        //             }
+        //         ]
+        //     })
+        // },
+        oneditsave: function () {
+            const node = this;
+
+            setTimeout(function () {
+                node.outputLabels = [
+                    node._(node.type + ".upperThreshold").replace("{}", node.tempThreshold),
+                    node._(node.type + ".lowerThreshold").replace("{}", node.tempThreshold)
+                ];
+            }, 0);
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Get skin temperature">
+    <!-- <div class="form-row">
+        <label for="node-input-resultMode"><i class="fa-sliders"></i> Result Mode</label>
+        <input type="text" id="node-input-resultMode" placeholder="Result Mode">
+    </div> -->
+<div class="form-row">
+    <label for="node-input-threshold"><i class="fa fa-thermometer-three-quarters"></i> <span
+            data-i18n="Get skin temperature.tempThreshold"></span>:</label>
+    <input type="number" min="0.1" max="100" step="0.1" id="node-input-tempThreshold"
+        data-i18n="[placeholder]Get skin temperature.tempThreshold">
+</div>
+</script>
+
+<script type="text/html" data-template-text="Get skin temperature"></script>

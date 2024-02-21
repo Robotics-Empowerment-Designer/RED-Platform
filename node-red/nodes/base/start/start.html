@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Start", {
+        category: "General",
+        color: "#E9967A",
+        defaults: {
+            loop: {
+                value: false
+            }
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "font-awesome/fa-play",
+        label: () => {
+            return this.name;
+        },
+        button: {
+            onclick: function () {
+                const node = this;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/start-node/" + node.id
+                });
+            }
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Start">
+    <div class="form-row">
+        <label for="node-input-loop"><i class="fa fa-repeat"></i> <span data-i18n="Start.loop"></span>:</label>
+        <input type="checkbox" id="node-input-loop">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Start"></script>

@@ -1,0 +1,14 @@
+{
+    "MoveAlong": {
+        "connectionError": "Verbindungsfehler",
+        "infoX": "Positive X-Werte lassen den Roboter nach vorne fahren.",
+        "infoY": "Positive Y-Werte lassen den Roboter nach links fahren.",
+        "infoTheta": "Positive Theta-Werte lassen den Roboter sich gegen den Uhrzeigersinn drehen.",
+        "infoTime": "Zeit, in der der Roboter die Bewegung ausfuehren soll.",
+        "inMeters": "in Metern",
+        "moving": "Bewegung läuft",
+        "movingInterrupted": "Bewegung unterbrochen",
+        "inDegrees": "in Grad",
+        "inSeconds": "in Sekunden"
+    }
+}

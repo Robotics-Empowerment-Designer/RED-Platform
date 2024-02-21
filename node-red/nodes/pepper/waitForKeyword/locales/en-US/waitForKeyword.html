@@ -1,0 +1,28 @@
+<script type="text/markdown" data-help-name="Wait for keyword">
+Waits until the robot has recognized the specified word sequence. 
+While the speech recognition is active, the robot's eyes light up blue. 
+After successful recognition, the eyes light up green.
+
+### Outputs
+1. Keyword outputs
+: payload (string) : Recognized word or recognized sentence
+2. Timeout
+: payload (string) : Text "timeout"
+
+### Settings
+: Language (string) : Language of the entered text.
+: Detection threshold (number) : Detection probability, how "sure" the robot has to be that the spoken text matches the configured word or sentence.
+: Keywords (string) : Words or sentences to be recognized.
+: Pepper's inquiry (string) : Words or sentences that the robot should say in case of failed recognition (are selected randomly).
+: Timeout (number) : Time in seconds after which the timeout (lowest output) is triggered if the speech recognition was not successful.
+
+
+### Details
+The robot's eyes light up blue as soon as speech recognition is active. When a word is recognized, the eyes light up green. 
+The `detection threshold` setting determines how confident the robot is that the spoken text matches the configured word or phrase.
+If the recognition fails, the robot asks, randomly selecting a word or phrase from the `Pepper's inquiry` setting. 
+The `timeout` setting determines after how many seconds the timeout (lowest output) is triggered.
+This time starts from the moment the speech recognition is activated and is not reset if Pepper asks for it.
+
+**Important:** The robot does not wait until all words/phrases are detected, but only the first detected word/phrase.
+</script>

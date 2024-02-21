@@ -1,0 +1,60 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Formatter", {
+        category: "Pepper",
+        color: "#DEB887",
+        defaults: {
+            template: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "template.svg",
+        label: () => {
+            return this.name;
+        },
+        oneditprepare: function () {
+            const node = this;
+
+            node.editor = RED.editor.createEditor({
+                id: "node-input-editor",
+                mode: "ace/mode/handlebars",
+                value: node.template,
+                highlightActiveLine: true,
+                minimap: {
+                    enabled: false
+                }
+            });
+        },
+        oneditsave: function () {
+            const node = this;
+
+            node.template = node.editor.getValue();
+            node.editor.destroy();
+            delete node.editor;
+        },
+        oneditcancel: function () {
+            const node = this;
+
+            node.editor.destroy();
+            delete node.editor;
+        },
+    });
+</script>
+
+<script type="text/html" data-template-name="Formatter">
+    <div class="form-row">
+        <p style="font-weight: bold"><span data-i18n="Formatter.information"></span>:</p>
+        <p>
+            <span data-i18n="Formatter.infoText1"></span>
+            <code>{{value}}</code>.<br>
+            <span data-i18n="Formatter.infoText2"></span>
+            <code><span data-i18n="Formatter.infoText3"></span></code>
+        </p>
+    </div>
+    <div class="form-row">
+        <div style="height: 250px; min-height:150px;" class="node-text-editor" id="node-input-editor"></div>
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Formatter"></script>

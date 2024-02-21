@@ -1,0 +1,100 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Database config", {
+        category: "Pepper",
+        defaults: {
+            configName: { value: "Config 1", required: true },
+            data: { value: [] }
+        },
+        label: function () {
+            const node = this;
+
+            return node.configName;
+        },
+        oneditprepare: function () {
+            const node = this;
+            const list = $("#node-config-input-list");
+            const templateHtml = $("#databaseConfigTemplate").html();
+
+            list.editableList({
+                addButton: "Add item",
+                removable: true,
+                sortable: true,
+                addItem: (row, index, data) => {
+                    $(row).html(templateHtml);
+
+                    if (jQuery.isEmptyObject(data)) {
+                        $(row).find(".custom-id")[0].value = index + 1;
+                        return;
+                    }
+
+                    $(row).find(".custom-id")[0].value = data.id;
+                    $(row).find(".custom-name")[0].value = data.name;
+                    $(row).find(".custom-location")[0].value = data.location;
+                }
+            });
+
+            if (node.data.length === 0) {
+                const defaultValue = {
+                    id: 1, name: node._(node.type + ".defaultName"),
+                    location: node._(node.type + ".defaultLocation")
+                };
+                list.editableList("addItem", defaultValue);
+            }
+
+            node.data.forEach(row => {
+                list.editableList("addItem", row);
+            });
+        },
+        oneditsave: function () {
+            const node = this;
+            node.data = [];
+            usedIDs = [];
+
+            const items = $("#node-config-input-list").editableList("items");
+            Array.from(items).forEach(row => {
+                const item = {};
+
+                item.id = $(row).find(".custom-id")[0].value;
+                item.name = $(row).find(".custom-name")[0].value;
+                item.location = $(row).find(".custom-location")[0].value;
+
+                if (Object.values(item).some(val => val === "")) {
+                    RED.notify(node._(node.type + ".deletedEmptydRows"), { type: "warning", timeout: 5000 });
+                    return;
+                }
+
+                if (usedIDs.includes(item.id)) {
+                    RED.notify(node._(node.type + ".deletedDuplicatedEntries"), { type: "warning", timeout: 5000 });
+                    return;
+                }
+                usedIDs.push(item.id);
+
+                node.data.push(item);
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "/update-config/" + node.id,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(node.data),
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Database config">
+    <template id="databaseConfigTemplate">
+        <input type="number" class="custom-id" min="1" max="999" required="true" style="width: 15%;" data-i18n="[placeholder]Database config.id">
+        <input type="text" class="custom-name" required="true" style="width: 40%;" data-i18n="[placeholder]Database config.name">
+        <input type="text" class="custom-location" required="true" style="width: 40%;" data-i18n="[placeholder]Database config.location">
+    </template>
+
+    <div class="form-row">
+        <label for="node-config-input-configName"><span data-i18n="Database config.configName"></span>:</label>
+        <input type="text" id="node-config-input-configName" data-i18n="[placeholder]Database config.configName">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-list"><i class="fa fa-database"></i> <span data-i18n="Database config.data"></span>:</label>
+        <ol id="node-config-input-list"></ol>
+    </div>
+</script>

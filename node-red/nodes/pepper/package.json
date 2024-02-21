@@ -1,0 +1,34 @@
+{
+    "name": "node-red-contrib-pepper",
+    "version": "0.1.0",
+    "node-red": {
+        "nodes": {
+            "animation": "animation/animation.js",
+            "awarenessConfig": "awarenessConfig/awarenessConfig.js",
+            "chatbot": "chatbot/chatbot.js",
+            "clearTablet": "clearTablet/clearTablet.js",
+            "database": "database/database.js",
+            "databaseConfig": "databaseConfig/databaseConfig.js",
+            "formatter": "formatter/formatter.js",
+            "getTemperature": "getTemperature/getTemperature.js",
+            "join": "join/join.js",
+            "ledSwitch": "ledSwitch/ledSwitch.js",
+            "LEDFade": "ledFade/ledFade.js",
+            "move": "move/move.js",
+            "moveAlong": "moveAlong/moveAlong.js",
+            "say": "say/say.js",
+            "showImage": "showImage/showImage.js",
+            "showText": "showText/showText.js",
+            "wait": "wait/wait.js",
+            "waitForButton": "waitForButton/waitForButton.js",
+            "waitForFace": "waitForFace/waitForFace.js",
+            "waitForKeyword": "waitForKeyword/waitForKeyword.js",
+	        "waitForQR": "waitForQR/waitForQR.js",
+            "grip": "grip/grip.js"
+        }
+    },
+    "dependencies": {
+        "socket.io-client": "^4.5.0",
+        "node-red-contrib-base":"file:../base"
+    }
+}

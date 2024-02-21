@@ -1,0 +1,12 @@
+{
+    "Move": {
+        "connectionError": "Verbindungsfehler",
+        "info": "Positive X-Werte lassen den Roboter nach vorne fahren.",
+        "info2": "Positive Y-Werte lassen den Roboter nach links fahren.",
+        "inMeters": "in Metern",
+        "moving": "Bewegung läuft",
+        "movingFailedOutput": "Wenn fehlgeschlagen",
+        "movingInterrupted": "Bewegung unterbrochen",
+        "movingSuccessOutput": "Wenn erfolgreich"
+    }
+}

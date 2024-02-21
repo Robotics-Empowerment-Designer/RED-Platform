@@ -1,0 +1,12 @@
+{
+    "Say": {
+        "connectionError": "Connection error",
+        "language": "Language",
+        "saying": "Saying something",
+        "text": "Text",
+        "languages": {
+            "english": "English",
+            "german": "German"
+        }
+    }
+}

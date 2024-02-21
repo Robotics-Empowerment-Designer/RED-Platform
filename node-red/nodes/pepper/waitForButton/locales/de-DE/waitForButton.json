@@ -1,0 +1,24 @@
+{
+    "Wait for button": {
+        "addItem": "Hinzufügen",
+        "button": "Button",
+        "buttonListLabel": "Buttons",
+        "connectionError": "Verbindungsfehler",
+        "deletedDuplicatedEntries": "Duplikate in der Konfiguration wurden gelöscht.",
+        "deletedEmptyRows": "Leere Einträge in der Konfiguration wurden gelöscht.",
+        "inputHint": "in Sekunden (0 = nie)",
+        "inSeconds": "in Sekunden",
+        "timeout": "Zeitüber-schreitung",
+        "timeoutOutput": "Zeitüberschreitung",
+        "waiting": "Warte auf {}",
+        "waitingMultiple": "Warte auf Taster",
+        "buttons": {
+            "head": "Kopf (gelb)",
+            "leftHand": "Linke Hand (blau)",
+            "rightHand": "Rechte Hand (rot)",
+            "leftBumper": "Linker Taster (grün)",
+            "rightBumper": "Rechter Taster (rot)",
+            "backBumper": "Hinterer Taster"
+        }
+    }
+}

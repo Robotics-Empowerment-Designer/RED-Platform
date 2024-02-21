@@ -1,0 +1,29 @@
+<script type="text/markdown" data-help-name="Formatter">
+Used to format texts and insert the values of variables.
+
+### Inputs
+: payload (string) :  Variable (value) to be inserted.
+
+### Outputs
+: payload (string) : Formatted text.
+
+### Settings
+: Text (string) : Text to be formatted.
+
+### Details
+The node is used to insert or format the output of the previous node into another text.
+
+In the following example the value of the previous node is inserted into a sentence. The variable value **must** be 
+must be specified with `{{value}}`. The robot could then say this text, as an example:
+
+"The measured temperature is `{{value}}`°C"
+
+***
+
+### Useful for the following nodes:
+- Database
+- Get skin temperature
+- Wait for button
+- Wait for QR
+
+</script>

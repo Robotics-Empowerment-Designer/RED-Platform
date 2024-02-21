@@ -1,0 +1,66 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Grip", {
+        category: "Pepper",
+        color: "#FFCC66",
+        defaults: {
+            movement: {
+                value: "Close"
+            },
+            hand: {
+                value: "Both"
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-hand-paper-o",
+        label: () => {
+            return this.name;
+        },
+        oneditprepare: function () {
+            const node = this;
+
+            $("#node-input-movement").typedInput({
+                types: [
+                    {
+                        value: "movement",
+                        options: [
+                            { value: "Close", label: node._(node.type + ".movements.close") },
+                            { value: "Open", label: node._(node.type + ".movements.open") }
+
+                        ]
+                    }
+                ]
+            }), 
+
+            $("#node-input-hand").typedInput({
+                types: [
+                    {
+                        value: "hand",
+                        options: [
+                            { value: "Both", label: node._(node.type + ".hands.both") },
+                            { value: "RHand", label: node._(node.type + ".hands.right") },
+                            { value: "LHand", label: node._(node.type + ".hands.left") }
+
+                        ]
+                    }
+                ]
+            })
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Grip">
+    <div class="form-row">
+        This works with Pepper robot.
+    </div>
+    <div class="form-row">
+        <label for="node-input-movement"><i class="fa fa-hand-rock-o"></i> <span data-i18n="Grip.movement"></span>:</label>
+        <input type="text" id="node-input-movement">
+    </div>
+    <div class="form-row">
+        <label for="node-input-hand"><i class="fa fa-hand-pointer-o"></i> <span data-i18n="Grip.hand"></span>:</label>
+        <input type="text" id="node-input-hand">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Grip"></script>

@@ -1,0 +1,9 @@
+{
+    "Join": {
+        "firstMessage": "First received message",
+        "lastMessage": "Last received message",
+        "needStartNode": "Needs start node",
+        "outputMessage": "Output message",
+        "waiting": "waiting"
+    }
+}

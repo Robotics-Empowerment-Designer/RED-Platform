@@ -1,0 +1,6 @@
+{
+    "Wait for HTTP": {
+        "connectionError": "Connection error",
+        "waiting": "Waiting for HTTP-Request"
+    }
+}

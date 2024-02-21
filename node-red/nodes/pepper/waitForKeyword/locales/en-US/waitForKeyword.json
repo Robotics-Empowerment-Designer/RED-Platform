@@ -1,0 +1,26 @@
+{
+    "Wait for keyword": {
+        "addItem": "Add item",
+        "connectionError": "Connection error",
+        "default": "Default",
+        "deletedEmptydRows": "Deleted empty config rows.",
+        "deletedDuplicatedEntries": "Deleted duplicated entries.",
+        "detectionThreshold": "Detection threshold",
+        "inputHint": "in seconds (0 = never)",
+        "inquiry": "Pepper's inquiry (random selection)",
+        "keywords": "Keywords",
+        "language": "Language",
+        "waiting": "Waiting for keywords",
+        "languages": {
+            "english": "English",
+            "german": "German"
+        },
+        "thresholds": {
+            "low": "Low (triggers more often)",
+            "medium": "Medium",
+            "high": "High (triggers less often)"
+        },
+        "timeout": "Timeout",
+        "timeoutOutput": "Timeout"
+    }
+}

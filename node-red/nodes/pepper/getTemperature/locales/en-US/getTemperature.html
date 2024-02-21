@@ -1,0 +1,20 @@
+<script type="text/markdown" data-help-name="Get skin temperature">
+Fetches the highest detected temperature value from the thermal sensor 
+and passes it to the upper or lower output depending on the threshold value.
+
+### Outputs
+1. Upper output
+: payload (number) : Measured temperature (>= threshold).
+2. Lower output
+: payload (number) : Measured temperature (< threshold).
+
+### Settings
+: Temp. threshold (number) : Threshold value.
+
+### Details
+As soon as this node is active, it waits for the current highest temperature value from the sensor.
+If the measured temperature is above the threshold, the value is output via the upper output. 
+If the value is is below the threshold value, the value is output via the lower output. 
+
+**Important:** Only **one** output can be triggered per cycle.
+</script>

@@ -1,0 +1,14 @@
+{
+    "MoveAlong": {
+        "connectionError": "Connection error",
+        "infoX": "Positive X values make the robot move forward.",
+        "infoY": "Positive Y values make the robot move to the left.",
+        "infoTheta": "Positive theta values make the robot turn counter clockwise.",
+        "infoTime": "The time in which the robot should perform the movement.",
+        "inMeters": "in meters",
+        "moving": "Moving",
+        "movingInterrupted": "Moving interrupted",
+        "inDegrees": "in degrees",
+        "inSeconds": "in seconds"
+    }
+}

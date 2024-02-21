@@ -1,0 +1,16 @@
+{
+    "Grip": {
+        "movement": "Bewegung",
+        "hand": "Hand",
+        "connectionError": "Verbindungsfehler",
+        "movements": {
+            "open": "Öffnen",
+            "close": "Schließen"
+        },
+        "hands": {
+            "both": "Beide Hände",
+            "right": "Rechte Hand",
+            "left": "Linke Hand"
+        }
+    }
+}

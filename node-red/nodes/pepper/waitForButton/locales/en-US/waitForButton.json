@@ -1,0 +1,24 @@
+{
+    "Wait for button": {
+        "addItem": "Add item",
+        "button": "Button",
+        "buttonListLabel": "Buttons",
+        "connectionError": "Connection error",
+        "deletedDuplicatedEntries": "Deleted duplicated entries.",
+        "deletedEmptyRows": "Deleted empty config rows.",
+        "inputHint": "in seconds (0 = never)",
+        "inSeconds": "in seconds",
+        "timeout": "Timeout",
+        "timeoutOutput": "Timeout",
+        "waiting": "Waiting for {} press.",
+        "waitingMultiple": "Waiting for button press.",
+        "buttons": {
+            "head": "Head (yellow)",
+            "leftHand": "Left hand (blue)",
+            "rightHand": "Right hand (red)",
+            "leftBumper": "Left bumper (green)",
+            "rightBumper": "Right bumper (red)",
+            "backBumper": "Back bumper"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "Wait time": {
+        "emptyTime": "No waiting time",
+        "inSeconds": "in seconds",
+        "waiting": "Waiting",
+        "waitingTime": "Waiting Time",
+        "waitingText": "Wait {} s"
+    }
+}

@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+
+  node-red:
+    image: node-red
+    volumes:
+      - ./node-red/data:/data/
+      - ./node-red/nodes:/nodes/:ro # read only
+      - ./node-red/settingsTemplate.js:/usr/src/node-red/settingsTemplate.js:ro # read only
+    environment:
+      - NODE_RED_PORT=${NODE_RED_PORT?error}
+      - PEPPER_REST_SERVER_IP=${PEPPER_REST_SERVER_IP?error}
+      - PEPPER_REST_SERVER_PORT=${PEPPER_REST_SERVER_PORT?error}
+      - TEMI_PORT=${TEMI_PORT?error}
+      - TEMI_ADDRESS=${TEMI_ADDRESS?error}
+      - LOG_LEVEL=${NODE_RED_LOG_LEVEL}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - TZ=Europe/Berlin
+    network_mode: host
+
+  # ---------------------------------------------------------------
+  # mdns:
+  #   image: mdns
+  #   volumes:
+  #     - ./mdns:/home/:ro # read only
+  #   environment:
+  #     - HOSTNAME=${HOSTNAME}
+  #     - TZ=Europe/Berlin
+  #   network_mode: host

@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Stop", {
+        category: "General",
+        color: "#E9967A",
+        defaults: {},
+        inputs: 1,
+        outputs: 0,
+        icon: "font-awesome/fa-stop",
+        align: "right",
+        label: () => {
+            return this.name;
+        },
+        button: {
+            onclick: function () {
+                const node = this;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/cancel-loop/" + node.id
+                });
+            }
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Stop">
+    <div class="form-row">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Stop"></script>

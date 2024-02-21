@@ -1,0 +1,57 @@
+<script type="text/javascript">
+    RED.nodes.registerType("MoveAlong", {
+        category: "Pepper",
+        color: "#FFCC66",
+        defaults: {
+            posX: {
+                value: 0,
+                required: true
+            },
+            posY: {
+                value: 0,
+                required: true
+            },
+            theta: {
+                value: 0,
+                required: true
+            },
+            time: {
+                value: 3.0,
+                required: true
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-location-arrow",
+        label: () => {
+            return this.name;
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="MoveAlong">
+    <div class="form-row">
+        <span data-i18n="MoveAlong.infoX"></span><br>
+        <span data-i18n="MoveAlong.infoY"></span><br>
+        <span data-i18n="MoveAlong.infoTheta"></span><br>
+        <span data-i18n="MoveAlong.infoTime"></span>
+    </div>
+    <div class="form-row">
+        <label for="node-input-x">X (<span data-i18n="MoveAlong.inMeters"></span>):</label>
+        <input type="number" id="node-input-posX" min="-10" max="10" step="0.1" placeholder="X">
+    </div>
+    <div class="form-row">
+        <label for="node-input-y">Y (<span data-i18n="MoveAlong.inMeters"></span>):</label>
+        <input type="number" id="node-input-posY" min="-10" max="10" step="0.1" placeholder="Y">
+    </div>
+    <div class="form-row">
+        <label for="node-input-theta">Theta (<span data-i18n="MoveAlong.inDegrees"></span>):</label>
+        <input type="number" id="node-input-theta" min="-10" max="10" step="0.1" placeholder="Y">
+    </div>
+    <div class="form-row">
+        <label for="node-input-time">Time (<span data-i18n="MoveAlong.inSeconds"></span>):</label>
+        <input type="number" id="node-input-time" min="-10" max="10" step="0.1" placeholder="Y">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="MoveAlong"></script>

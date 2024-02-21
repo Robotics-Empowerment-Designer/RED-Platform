@@ -1,0 +1,12 @@
+{
+    "Database": {
+        "database": "Database",
+        "databaseUndefined": "node.database is undefined",
+        "emptyInput": "No input data",
+        "error": "Error",
+        "infoText": "Please select your database here.",
+        "invalidData": "Invalid data",
+        "locationNotFound": "Location not found",
+        "ok": "Okay"
+    }
+}

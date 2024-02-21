@@ -1,0 +1,12 @@
+{
+    "Ping": {
+        "connectionError": "Verbindungsfehler",
+        "language": "Sprache",
+        "saying": "Sage etwas",
+        "text": "Text",
+        "languages": {
+            "english": "Englisch",
+            "german": "Deutsch"
+        }
+    }
+}

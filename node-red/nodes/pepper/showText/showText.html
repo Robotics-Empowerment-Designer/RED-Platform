@@ -1,0 +1,51 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Show text", {
+        category: "Pepper",
+        color: "#C0C0C0",
+        defaults: {
+            text: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-font",
+        label: () => {
+            return this.name;
+        },
+        oneditprepare: function () {
+            const node = this;
+
+            node.editor = RED.editor.createEditor({
+                id: "node-input-editor",
+                mode: "ace/mode/text",
+                value: node.text,
+                highlightActiveLine: true,
+                minimap: {
+                    enabled: false
+                }
+            });
+        },
+        oneditsave: function () {
+            const node = this;
+
+            node.text = node.editor.getValue();
+            node.editor.destroy();
+            delete node.editor;
+        },
+        oneditcancel: function () {
+            const node = this;
+
+            node.editor.destroy();
+            delete node.editor;
+        },
+    });
+</script>
+
+<script type="text/html" data-template-name="Show text">
+    <div class="form-row">
+        <label for="node-input-text"><i class="fa fa-font"></i> <span data-i18n="Show text.tabletText"></span>:</label>
+        <!-- <input type="text" id="node-input-text" data-i18n="[placeholder]Show text.tabletText"> -->
+        <div style="height: 250px; min-height:150px;" class="node-text-editor" id="node-input-editor"></div>
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Show text"></script>

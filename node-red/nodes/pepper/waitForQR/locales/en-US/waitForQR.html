@@ -1,0 +1,22 @@
+<script type="text/markdown" data-help-name="Wait for QR code">
+Waits until the robot has recognized a **single** QR code. For this purpose the robot uses 
+the camera on its forehead. After successful recognition, the flow continues.
+
+### Outputs
+1. QR code detected
+: payload (string) : Data of the QR code
+2. Timeout
+: payload (string) : Text "timeout"
+
+### Settings
+: Allow all inputs (bool) : See details
+: Timeout (number) : Time in seconds after which the timeout (2nd output) is triggered, if no QR code has been recognized before that.
+
+### Details
+By default, only QR codes for the household scenario are recognized. 
+If all possible QR codes should be recognized, the option `Allow all inputs` must be activated. 
+Only then will the data from all QR Codes be routed to the output.
+
+**Important:** Only one QR Code is recognized per cycle, if several have been recognized, 
+the first QR Code is always selected. This should be avoided.
+</script>

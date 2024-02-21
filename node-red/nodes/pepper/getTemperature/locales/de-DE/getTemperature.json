@@ -1,0 +1,10 @@
+{
+    "Get skin temperature": {
+        "connectionError": "Verbindungsfehler",
+        "lastTemp": "Letzte Temp.: {} °C",
+        "lowerThreshold": "Wenn Temp. < {} °C",
+        "tempThreshold": "Temp. Schwelle (°C)",
+        "upperThreshold": "Wenn Temp. >= {} °C",
+        "waitingForValues": "Warte auf Thermalkamera"
+    }
+}

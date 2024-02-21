@@ -1,0 +1,23 @@
+{
+    "Fade LED": {
+        "connectionError": "Connection error",
+        "ledGroup": "LED group",
+        "color": "Color",
+        "duration": "Duration",
+        "inSeconds": "in seconds",
+        "colors": {
+            "blue": "Blue",
+            "cyan": "Cyan",
+            "green": "Green",
+            "magenta": "Magenta",
+            "red": "Red",
+            "white": "White",
+            "yellow": "Yellow"
+        },
+        "groups": {
+            "allLeds": "All",
+            "chestLeds": "Shoulder",
+            "faceLeds": "Face"
+        }
+    }
+}

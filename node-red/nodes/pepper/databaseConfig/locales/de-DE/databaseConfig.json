@@ -1,0 +1,13 @@
+{
+    "Database config": {
+        "configName": "Konfigurationsname",
+        "data": "Daten",
+        "defaultName": "Standard-Name",
+        "defaultLocation": "Standard-Position",
+        "deletedEmptydRows": "Leere Einträge in der Konfiguration wurden gelöscht.",
+        "deletedDuplicatedEntries": "Duplikate in der Konfiguration wurden gelöscht. ",
+        "id": "ID",
+        "location": "Position",
+        "name": "Name"
+    }
+}

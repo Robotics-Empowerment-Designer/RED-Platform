@@ -1,0 +1,38 @@
+<script type="text/markdown" data-help-name="Database">
+Indicates the location of an item based on the input data e.g. starting from the QR Node.
+
+### Inputs
+: payload (number) : Identifier of the respective item.
+
+### Outputs
+1. upper outputs
+: payload (string) : Location of the corresponding item.
+2. bottom output (error)
+: payload ( ) : Input data.
+
+### Settings
+: database ( ) : Database
+: Config name (string) : Name of the database.
+: Id (number) : Item identifier.
+: Name (string) : Name of the item.
+: Location (string) : Location of the item.
+
+### Details
+This node takes the input data and checks whether it matches an identifier of an item in the database.
+If such a match is detected, the location of the corresponding item is sent to the associated output. 
+The number of outputs depends on the number of unique locations in the database. 
+If no match is found, the input data is sent unchanged to the 'Error' output.
+
+**Advanced users:** If the recognition is successful, both location and name as well as the identifier are output.
+While the location can be accessed normally with `{{value}}`, the name can be accessed with `{{name}}` 
+and the identifier with `{{id}}`.
+
+### Example
+QR Node scans a QR code, the database searches for the corresponding entry and returns the location if it finds it.
+The database could be populated with the following data, for example.
+
+| ID          | Name        | Location      |
+| ----------- | ----------- | ------------- |
+| 1           | Toast       | Fridge        |
+| 2           | Cookies     | Storage       |
+</script>

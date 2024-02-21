@@ -1,0 +1,8 @@
+{
+    "Show image": {
+        "cantLoadImage": "Can't load image",
+        "connectionError": "Connection error",
+        "imageUrl": "Image URL",
+        "inavlidUrl": "Inavlid image URL"
+    }
+}

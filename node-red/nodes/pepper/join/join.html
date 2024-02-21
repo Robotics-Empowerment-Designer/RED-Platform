@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Join", {
+        category: "Pepper",
+        color: "#A6BBCF",
+        defaults: {
+            outputMessage: {
+                value: "first"
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-code-fork",
+        label: () => {
+            return this.name;
+        },
+        oneditprepare: function () {
+            const node = this;
+
+            $("#node-input-outputMessage").typedInput({
+                types: [
+                    {
+                        value: "outputMessage",
+                        options: [
+                            { value: "first", label: node._(node.type + ".firstMessage") },
+                            { value: "last", label: node._(node.type + ".lastMessage") }
+                        ]
+                    }
+                ]
+            })
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Join">
+    <div class="form-row">
+        <label for="node-input-outputMessage"><i class="fa fa-envelope-o"></i> <span data-i18n="Join.outputMessage"></span>:</label>
+        <input type="text" id="node-input-outputMessage" data-i18n="[placeholder]Join.outputMessage">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Join"></script>

@@ -1,0 +1,6 @@
+{
+    "Wait for face": {
+        "connectionError": "Verbindungsfehler",
+        "waiting": "Warte auf HTTP-Request"
+    }
+}

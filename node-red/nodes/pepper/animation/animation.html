@@ -1,0 +1,60 @@
+<script type="text/javascript">
+    let animations = null;
+
+    RED.nodes.registerType("Animation", {
+        category: "Pepper",
+        color: "#FFCC66",
+        defaults: {
+            animation: {
+                value: "animations/Stand/Gestures/Yes_1"
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-child",
+        label: () => {
+            return this.name;
+        },
+        oneditprepare: function () {
+            const node = this;
+
+            if (animations) {
+                $("#node-input-animation").typedInput({
+                    types: [
+                        {
+                            value: "animation",
+                            options: animations
+                        }
+                    ]
+                });
+                return;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/get-animations/" + node.id,
+                success: data => {
+                    animations = data;
+
+                    $("#node-input-animation").typedInput({
+                        types: [
+                            {
+                                value: "animation",
+                                options: data
+                            }
+                        ]
+                    });
+                }
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Animation">
+    <div class="form-row">
+        <label for="node-input-animation"><i class="fa fa-child"></i> <span data-i18n="Animation.animation"></span>:</label>
+        <input type="text" id="node-input-animation">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Animation"></script>

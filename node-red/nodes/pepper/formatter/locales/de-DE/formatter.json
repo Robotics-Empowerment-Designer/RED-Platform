@@ -1,0 +1,8 @@
+{
+    "Formatter": {
+        "information": "Information",
+        "infoText1": "Du kannst auf den Wert der vorherigen Node zugreifen mit",
+        "infoText2": "Beispiel:",
+        "infoText3": "Der Wert der vorherigen Node ist {{value}}."
+    }
+}

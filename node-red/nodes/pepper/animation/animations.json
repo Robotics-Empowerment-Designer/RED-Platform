@@ -1,0 +1,94 @@
+[
+    {
+        "value": "animations/Stand/Gestures/Yes_1",
+        "label": "Yes"
+    },
+    {
+        "value": "animations/Stand/Gestures/IDontKnow_2",
+        "label": "No 1"
+    },
+    {
+        "value": "animations/Stand/Gestures/No_8",
+        "label": "No 2"
+    },
+    {
+        "value": "animations/Stand/Gestures/Hey_1",
+        "label": "Hey"
+    },
+    {
+        "value": "animations/Stand/Gestures/Hey_3",
+        "label": "Wave"
+    },
+    {
+        "value": "animations/Stand/Gestures/Me_2",
+        "label": "Me"
+    },
+    {
+        "value": "animations/Stand/Gestures/You_1",
+        "label": "You"
+    },
+    {
+        "value": "masterarbeit-pepper/behavior_stop",
+        "label": "Stop"
+    },
+    {
+        "value": "masterarbeit-pepper/behavior_show_left",
+        "label": "Show left"
+    },
+    {
+        "value": "masterarbeit-pepper/behavior_show_right",
+        "label": "Show right"
+    },
+    {
+        "value": "animations/Stand/Gestures/ShowFloor_1",
+        "label": "Show floor"
+    },
+    {
+        "value": "animations/Stand/Gestures/ShowTablet_2",
+        "label": "Show tablet"
+    },
+    {
+        "value": "animations/Stand/Gestures/Far_1",
+        "label": "Far 1"
+    },
+    {
+        "value": "animations/Stand/Gestures/Far_3",
+        "label": "Far 2"
+    },
+    {
+        "value": "animations/Stand/Gestures/Explain_1",
+        "label": "Explain 1"
+    },
+    {
+        "value": "animations/Stand/Gestures/Explain_11",
+        "label": "Explain 2"
+    },
+    {
+        "value": "animations/Stand/Emotions/Positive/Happy_4",
+        "label": "Nod"
+    },
+    {
+        "value": "animations/Stand/Gestures/IDontKnow_1",
+        "label": "Unsure"
+    },
+    {
+        "value": "animations/Stand/Gestures/BowShort_1",
+        "label": "Bow"
+    },
+    {
+        "value": "animations/Stand/Emotions/Negative/Bored_1",
+        "label": "Disappointed"
+    },
+    {
+        "value": "animations/Stand/Gestures/CalmDown_1",
+        "label": "Calm down"
+    },
+    {
+        "value": "animations/Stand/Gestures/Desperate_1",
+        "label": "Desperate"
+    },
+    {
+        "value": "animations/Stand/Gestures/YouKnowWhat_1",
+        "label": "Upset"
+    }
+]

@@ -1,0 +1,17 @@
+{
+    "Switch LED": {
+        "connectionError": "Connection error",
+        "ledGroup": "LED group",
+        "power": "Power state",
+        "groups": {
+            "allLeds": "All",
+            "chestLeds": "Shoulder",
+            "earLeds": "Ear",
+            "faceLeds": "Eyes"
+        },
+        "powerStates": {
+            "off": "Off",
+            "on": "On"
+        }
+    }
+}

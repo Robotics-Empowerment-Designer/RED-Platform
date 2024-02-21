@@ -1,0 +1,26 @@
+{
+    "Wait for keyword": {
+        "addItem": "Hinzufügen",
+        "connectionError": "Verbindungsfehler",
+        "default": "Standard",
+        "deletedEmptydRows": "Leere Einträge in der Konfiguration wurden gelöscht.",
+        "deletedDuplicatedEntries": "Duplikate in der Konfiguration wurden gelöscht. ",
+        "detectionThreshold": "Erkennungs-schwelle",
+        "inputHint": "in Sekunden (0 = nie)",
+        "inquiry": "Peppers Nachfrage (zufällige Auswahl)",
+        "keywords": "Schlüsselwörter",
+        "language": "Sprache",
+        "waiting": "Warte auf Schlüsselwörter",
+        "languages": {
+            "english": "Englisch",
+            "german": "Deutsch"
+        },
+        "thresholds": {
+            "low": "Niedrig (löst öfters aus)",
+            "medium": "Mittel",
+            "high": "Hoch (löst seltener aus)"
+        },
+        "timeout": "Zeitüber-schreitung",
+        "timeoutOutput": "Zeitüberschreitung"
+    }
+}

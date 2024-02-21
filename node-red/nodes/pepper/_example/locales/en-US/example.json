@@ -1,0 +1,11 @@
+{
+    "example": {
+        "emptyTime": "No waiting time",
+        "exampleString": "This is an example of a localized string",
+        "text": "Text",
+        "inSeconds": "in seconds",
+        "waiting": "Waiting",
+        "waitingTime": "Waiting Time",
+        "waitingText": "Wait {} s"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "Start": {
+        "anotherflowCurrentlyRunning": "Ein anderer Flow läuft bereits",
+        "anotherflowRunning": "Ein anderer Flow läuft",
+        "flowCurrentlyRunning": "Flow läuft bereits",
+        "flowRunning": "Flow läuft",
+        "loop": "Wiederholen",
+        "loopTimeTooShort": "Die Laufzeit ist zu kurz",
+        "noStopNode": "Keine Stop-Node",
+        "recursionDetected": "Recursion erkannt",
+        "tooManyStopNodes": "Zu viele Stop-Nodes"
+    }
+}

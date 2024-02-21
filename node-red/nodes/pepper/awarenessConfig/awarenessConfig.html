@@ -1,0 +1,67 @@
+<script type="text/javascript">
+    RED.nodes.registerType("AwarenessConfig", {
+        category: "Pepper",
+        color: "#FFCC66",
+        defaults: {
+            autonomousBlinking: {
+                value: true,
+                required: true
+            },
+            backgroundMovement: {
+                value: true,
+                required: true
+            },
+            basicAwareness: {
+                value: true,
+                required: true
+            },
+            listeningMovement: {
+                value: true,
+                required: true
+            },
+            speakingMovement: {
+                value: true,
+                required: true
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-location-arrow",
+        label: () => {
+            return this.name;
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="AwarenessConfig">
+    <div class="form-row">
+        <span data-i18n="AwarenessConfig.info"></span><br>
+        <span data-i18n="AwarenessConfig.infoAutonomousBlinking"></span><br>
+        <span data-i18n="AwarenessConfig.infoBackgroundMovement"></span><br>
+        <span data-i18n="AwarenessConfig.infoBasicAwareness"></span><br>
+        <span data-i18n="AwarenessConfig.infoListeningMovement"></span><br>
+        <span data-i18n="AwarenessConfig.infoSpeakingMovement"></span>
+    </div>
+    <div class="form-row">
+        <label for="node-input-autonomousBlinking">autonomousBlinking:</label>
+        <input type="checkbox" id="node-input-autonomousBlinking">
+    </div>
+    <div class="form-row">
+        <label for="node-input-backgroundMovement">backgroundMovement</label>
+        <input type="checkbox" id="node-input-backgroundMovement">
+    </div>
+    <div class="form-row">
+        <label for="node-input-basicAwareness">basicAwareness:</label>
+        <input type="checkbox" id="node-input-basicAwareness">
+    </div>
+    <div class="form-row">
+        <label for="node-input-listeningMovement">listeningMovement:</label>
+        <input type="checkbox" id="node-input-listeningMovement">
+    </div>
+    <div class="form-row">
+        <label for="node-input-speakingMovement">speakingMovement:</label>
+        <input type="checkbox" id="node-input-speakingMovement">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="AwarenessConfig"></script>

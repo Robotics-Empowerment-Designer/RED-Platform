@@ -1,0 +1,38 @@
+<script type="text/markdown" data-help-name="Database">
+Gibt den Standort eines Gegenstands basierend auf den Eingangsdaten an, z.B. ausgehend von der QR Node.
+
+### Eingänge
+: payload (number) : Kennung des jeweiligen Gegenstands.
+
+### Ausgänge
+1. Obere Ausgänge (standard)
+: payload (string) : Standort des entsprechenden Gegenstands.
+2. Unterster Ausgang (Fehler)
+: payload ( ) : Eingangsdaten.
+
+### Einstellungen
+: Database ( ) : Datenbank
+: Config name (string) : Name der Datenbank.
+: Id (number) : Kennung des Gegenstands.
+: Name (string) : Name des Gegenstands.
+: Location (string) : Ort des Gegenstands.
+
+### Details
+Diese Node nimmt die Eingangsdaten und prüft ob diese mit Kennungen von Gegenständen in der Datenbank übereinstimmen.
+Sollte eine solche Übereinstimmung erkannt werden, wird der Standort des entsprechenden Gegenstands am dazugehörigen Ausgang
+ausgegeben. Die Anzahl der Ausgänge hängt dabei von der Anzahl der einzigartigen Standorte in der Datenbank ab. Sollte keine
+Übereinstimmung gefunden worden sein, werden die Eingangsdaten unverändert beim `Error`-Ausgang ausgegeben.
+
+**Fortgeschrittene Benutzer:** Bei erfolgreicher Erkennung werden sowohl Standort also auch Name sowie die Kennung ausgegeben.
+Während der Standort normal mit `{{value}}` angesprochen werden kann, ist der Name über `{{name}}` und die Kennung
+mittels `{{id}}` erreichbar.
+
+### Beispiel
+QR Node scannt einen QR Code, die Datenbank sucht den entsprechenden Eintrag und gibt bei Erfolg den Standort zurück.
+Die Datenbank könnte so bspw. mit den folgenden Daten befüllt werden.
+
+| ID          | Name        | Ort           |
+| ----------- | ----------- | ------------- |
+| 1           | Toastbrot   | Kühlschrank   |
+| 2           | Kekse       | Abstellkammer |
+</script>

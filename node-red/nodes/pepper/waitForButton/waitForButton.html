@@ -1,0 +1,151 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Wait for button", {
+        category: "Pepper",
+        color: "#A6BBCF",
+        defaults: {
+            timeout: {
+                value: null
+            },
+            button: {
+                value: "Head"
+            },
+            buttons: {
+                value: ["Head"]
+            },
+            outputs: {
+                value: 1
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-hand-pointer-o",
+        label: () => {
+            return this.name;
+        },
+        oneditprepare: function () {
+            const node = this;
+            const list = $("#node-input-button-list");
+            const templateHtml = $("#button-template").html();
+            const buttonOptions = $(".custom-button")
+
+            list.editableList({
+                addButton: node._(node.type + ".addItem"),
+                removable: true,
+                sortable: true,
+                addItem: (row, index, data) => {
+                    $(row).html(templateHtml);
+                    selectHTML = $(row).find(".custom-button")[0];
+
+                    if (jQuery.isEmptyObject(data)) {
+                        selectHTML.value = "Head";
+
+                        node._def.addTranslatedOptions(selectHTML, node);
+                        return;
+                    }
+                    node._def.addTranslatedOptions(selectHTML, node);
+                    selectHTML.value = data;
+                }
+            });
+
+            if (node.buttons.length === 0) {
+                list.editableList("addItem", "");
+            }
+
+            node.buttons.forEach(button => {
+                list.editableList("addItem", button);
+            });
+        },
+        oneditsave: function () {
+            const node = this;
+            const list = $("#node-input-button-list");
+            node.buttons = [];
+
+            const items = $("#node-input-button-list").editableList("items");
+            Array.from(items).forEach(row => {
+                const item = $(row).find(".custom-button")[0].value;
+
+                if (item === "") {
+                    RED.notify(node._(node.type + ".deletedEmptyRows"), { type: "warning", timeout: 5000 });
+                    return;
+                }
+
+                if (node.buttons.includes(item)) {
+                    RED.notify(node._(node.type + ".deletedDuplicatedEntries"), { type: "warning", timeout: 5000 });
+                    return;
+                }
+                node.buttons.push(item);
+            });
+
+            if (node.buttons.length === 0) {
+                node.buttons = [node._(node.type + ".default")];
+                list.editableList("addItem", node.buttons[0]);
+            }
+
+            setTimeout(function () {
+                mapping = node._def.getButtonMapping(node);
+                const translatedOutputs = [];
+                for (let index = 0; index < node.buttons.length; index++) {
+                    translatedOutputs[index] = mapping[node.buttons[index]];
+                }
+
+                if (node.timeout !== null && node.timeout > 0) {
+                    translatedOutputs[node.buttons.length] = node._(node.type + ".timeoutOutput"); // append timeout output
+                    node.outputs = node.buttons.length + 1;
+                } else {
+                    node.outputs = node.buttons.length;
+                }
+                node.outputLabels = translatedOutputs;
+            }, 0);
+        },
+        addTranslatedOptions: function (selectHTML, parentNode) {
+            selectHTML.options[0].textContent = parentNode._(parentNode.type + ".buttons.head");
+            selectHTML.options[1].textContent = parentNode._(parentNode.type + ".buttons.leftHand");
+            selectHTML.options[2].textContent = parentNode._(parentNode.type + ".buttons.rightHand");
+            selectHTML.options[3].textContent = parentNode._(parentNode.type + ".buttons.leftBumper");
+            selectHTML.options[4].textContent = parentNode._(parentNode.type + ".buttons.rightBumper");
+            selectHTML.options[5].textContent = parentNode._(parentNode.type + ".buttons.backBumper");
+        },
+        getButtonMapping: function (parentNode) { // for the translation of the value behind the buttons into (more) legible names (in the target language) 
+            const mapping = {
+                "Head": parentNode._(parentNode.type + ".buttons.head"),
+                "LHand/Touch/Back": parentNode._(parentNode.type + ".buttons.leftHand"),
+                "RHand/Touch/Back": parentNode._(parentNode.type + ".buttons.rightHand"),
+                "Bumper/FrontLeft": parentNode._(parentNode.type + ".buttons.leftBumper"),
+                "Bumper/FrontRight": parentNode._(parentNode.type + ".buttons.rightBumper"),
+                "Bumper/Back": parentNode._(parentNode.type + ".buttons.backBumper")
+            };
+
+            // remove (***) from each entry
+            Object.keys(mapping).forEach(m => {
+                if (mapping[m].includes("(")) {
+                    mapping[m] = mapping[m].split("(")[0].trim();
+                }
+            });
+
+            return mapping;
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Wait for button">
+    <template id="button-template">
+        <select class="custom-button">
+            <option value="Head"></option>
+            <option value="LHand/Touch/Back"></option>
+            <option value="RHand/Touch/Back"></option>
+            <option value="Bumper/FrontLeft"></option>
+            <option value="Bumper/FrontRight"></option>
+            <option value="Bumper/Back"></option>
+        </select>
+    </template>
+    <div class="form-row">
+        <label for="node-input-button-list"><i class="fa fa-hand-pointer-o"></i> <span data-i18n="Wait for button.buttonListLabel"></span>:</label>
+        <ol id="node-input-button-list"></ol>
+    </div>
+    <div class="form-row">
+        <label for="node-input-timeout" style="overflow-wrap: break-word;"><i class="fa fa-clock-o"></i> <span data-i18n="Wait for button.timeout"></label>
+        <input type="number" id="node-input-timeout" min="0" data-i18n="[placeholder]Wait for button.inputHint">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Wait for button"></script>

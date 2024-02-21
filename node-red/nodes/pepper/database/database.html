@@ -1,0 +1,79 @@
+<script type="text/javascript">
+    function getUniqueLocations(node, data) {
+        const locations = [];
+        data.forEach(row => {
+            if (locations.some(l => l.toLowerCase() === row.location.toLowerCase())) {
+                return;
+            }
+
+            locations.push(row.location);
+        });
+
+        locations.push(node._(node.type + ".error"));
+
+        return locations;
+    }
+
+    RED.nodes.registerType("Database", {
+        category: "Pepper",
+        color: "#D7D7A0",
+        defaults: {
+            database: { value: "", type: "Database config" },
+            outputs: { value: 1 }
+        },
+        inputs: 1,
+        outputs: 1,
+        outputLabels: function (index) {
+            return this._(this.type + ".error");
+        },
+        icon: "font-awesome/fa-database",
+        label: () => {
+            return this.name;
+        },
+        oneditsave: function () {
+            const node = this;
+
+            setTimeout(function () {
+                if (node.database == null || node.database == undefined) {
+                    const notification = RED.notify(node._(node.type + ".databaseUndefined"), {
+                        modal: true,
+                        fixed: true,
+                        type: "error",
+                        buttons: [
+                            {
+                                text: node._(node.type + ".ok"),
+                                class: "primary",
+                                click: function (e) {
+                                    notification.close();
+                                }
+                            }
+                        ]
+                    });
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/database-config/" + node.database,
+                    success: data => {
+                        const locations = getUniqueLocations(node, data);
+
+                        node.outputs = locations.length;
+                        node.outputLabels = locations;
+                    }
+                });
+            }, 0);
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Database">
+    <div class="form-row">
+        <span data-i18n="Database.infoText"></span>
+    </div>
+    <div class="form-row">
+        <label for="node-input-database"><i class="fa fa-database"></i> <span data-i18n="Database.database"></span>:</label>
+        <input type="text" id="node-input-database">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Database"></script>

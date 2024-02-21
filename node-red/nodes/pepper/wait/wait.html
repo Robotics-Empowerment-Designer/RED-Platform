@@ -1,0 +1,33 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Wait time", {
+        category: "Pepper",
+        color: "#A6BBCF",
+        defaults: {
+            time: {
+                value: "5",
+                required: true
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-clock-o",
+        label: function () {
+            const node = this;
+
+            if (node.time == "") {
+                return node._(node.type + ".emptyTime");
+            }
+
+            return node._(node.type + ".waitingText").replace("{}", node.time);
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Wait time">
+    <div class="form-row">
+        <label for="node-input-time"><i class="fa fa-clock-o"></i> <span data-i18n="Wait time.waitingTime"></span><br>(<span data-i18n="Wait time.inSeconds"></span>):</label>
+        <input type="number" id="node-input-time" min="1" data-i18n="[placeholder]Wait time.waitingTime">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Wait time"></script>

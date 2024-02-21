@@ -1,0 +1,10 @@
+{
+    "Wait for face": {
+        "connectionError": "Connection error",
+        "faceDetectedOutput": "Face detected",
+        "inputHint": "in seconds (0 = never)",
+        "timeout": "Timeout",
+        "timeoutOutput": "Timeout",
+        "waiting": "Waiting for face"
+    }
+}

@@ -1,0 +1,28 @@
+<script type="text/markdown" data-help-name="Wait for keyword">
+Wartet bis der Roboter die angegebene Wortfolge erkannt hat. 
+Während die Spracherkennung aktiv ist, leuchten die Augen des Roboters blau. 
+Nach erfolgreicher Erkennung leuchten die Augen grün.
+
+### Ausgänge
+1. Schlüsselwort Ausgänge
+: payload (string) : Erkanntes Wort bzw. erkannter Satz
+2. Zeitüberschreitung
+: payload (string) : Text "timeout"
+
+### Einstellungen
+: Sprache (string) : Sprache des eingegebenen Textes.
+: Erkennungsschwelle (number) : Erkennungswahrscheinlichkeit, wie "sicher" sich der Roboter sein muss, dass der gesprochene Text mit dem konfiguriertem Wort oder Satz übereinstimmt.
+: Schlüsselwörter (string) : Zu erkennende Wörter oder Sätze.
+: Peppers Nachfrage (string) : Wörter oder Sätze, die der Roboter bei fehlgeschlagener Erkennung sagen soll (werden zufällig ausgewählt).
+: Zeitüberschreitung (number) : Zeit in Sekunden, nach der die Zeitüberschreitung (unterster Ausgang) ausgelöst wird, falls die Spracherkennung nicht erfolgreich war.
+
+### Details
+Die Augen des Roboters leuchten blau sobald die Spracherkennung aktiv ist. Wenn ein Wort erkannt wurde leuchten
+die Augen grün auf. Die `Erkennungsschwelle` Einstellung bestimmt dabei wie sicher sich der Roboter ist, dass der
+gesprochene Text mit dem konfiguriertem Wort oder Satz übereinstimmt. Sollte die Erkennung fehlschlagen, fragt der 
+Roboter nach, dabei wird zufällig ein Wort oder Satz aus der `Peppers Nachfrage` Einstellung ausgewählt.
+Die `Zeitüberschreitung` Einstellung bestimmt nach wie vielen Sekunden die Zeitüberschreitung (unterster Ausgang) ausgelöst wird.
+Diese Zeit beginnt ab dem Zeitpunkt der Aktivierung der Spracherkennung und wird nicht zurückgesetzt, falls Pepper nachfragt.
+
+**Wichtig:** Es wird nicht gewartet bis alle festgelegten Wörter/Sätze erkannt wurden, sondern nur das erste Mal.   
+</script>

@@ -1,0 +1,13 @@
+{
+    "Say": {
+        "connectionError": "Verbindungsfehler",
+        "language": "Sprache",
+        "saying": "Sage etwas",
+        "text": "Text",
+        "isAnimated": "Animiertes Sprechen",
+        "languages": {
+            "english": "Englisch",
+            "german": "Deutsch"
+        }
+    }
+}

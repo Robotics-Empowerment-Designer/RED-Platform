@@ -1,0 +1,20 @@
+<script type="text/markdown" data-help-name="Get skin temperature">
+Holt sich den höchsten erkannten Temperaturwert vom Thermalsensor und 
+leitet diesen je nach Schwelltwert an oberen oder unteren Ausgang.
+
+### Ausgänge
+1. Oberer Ausgang
+: payload (number) : Gemessene Temperatur (>= Schwellwert)
+2. Unterer Ausgang
+: payload (number) : Gemessene Temperatur (< Schwellwert)
+
+### Einstellungen
+: Temp. threshold (number) : Schwellwert
+
+### Details
+Sobald diese Node aktiv ist wird auf den aktuellen höchsten Temperaturwert vom Sensor gewartet.
+Liegt die gemessene Temperatur über dem Schwellwert wird der Wert über den oberen Ausgang ausgegeben. Falls der Wert
+darunter liegt über den Unteren. 
+
+**Wichtig:** Pro Durchlauf kann nur **ein** Ausgang ausgelöst werden.
+</script>

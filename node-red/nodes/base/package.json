@@ -1,0 +1,10 @@
+{
+  "name": "node-red-contrib-base",
+  "version": "0.1.0",
+  "node-red": {
+      "nodes": {
+          "start": "start/start.js",
+          "stop": "stop/stop.js"
+      }
+  }
+}

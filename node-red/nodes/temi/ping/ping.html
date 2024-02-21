@@ -1,0 +1,57 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Ping", {
+        category: "Temi",
+        color: "#FFCC66",
+        defaults: {
+            language: {
+                value: "German"
+            },
+            text: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-commenting-o",
+        label: () => {
+            return this.name;
+        },
+        button: {
+            onclick: function () {
+                const node = this;
+                $.ajax({
+                    type: "GET",
+                    url: "/temi/ping"
+                });
+            }
+        },
+        oneditprepare: function () {
+            const node = this;
+
+            $("#node-input-language").typedInput({
+                types: [
+                    {
+                        value: "language",
+                        options: [
+                            { value: "German", label: node._(node.type + ".languages.german") },
+                            { value: "English", label: node._(node.type + ".languages.english") }
+                        ]
+                    }
+                ]
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Ping">
+    <div class="form-row">
+        <label for="node-input-language"><i class="fa fa-globe"></i> <span data-i18n="Ping.language"></span>:</label>
+        <input type="text" id="node-input-language" data-i18n="[placeholder]Ping.language">
+    </div>
+    <div class="form-row">
+        <label for="node-input-text"><i class="fa fa-commenting-o"></i> <span data-i18n="Ping.text"></span>:</label>
+        <input type="text" id="node-input-text" data-i18n="[placeholder]Ping.text">
+    </div>
+</script>
+
+<script type="text/html" data-template-text="Ping"></script>
