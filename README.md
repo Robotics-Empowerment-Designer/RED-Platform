@@ -26,7 +26,8 @@ Node-(RED)<sup>2</sup> is a self-hosted web application designed to allow even u
 
 With Node-RED the user will be able to easily create and configure scenarios for the robot, subsequently referred to as *flows*. To enable even non-technical users to use the system, we have deliberately made some fundamental changes to Node-RED. Therefore, we have moved away from the original event-based approach of how flows are started and stopped in Node-RED. In Node-(RED)<sup>2</sup> the user has to define a clear start and end to a flow with the respective *Start*- and *Stop*-nodes. This not only is a means of organization and intuitive This allows the user to start or stop a flow at any time.
 
-[comment]: # (add disclaimer that the project is still in early stages; link to paper)
+> **Note**:
+> This application was referenced in the paper ***Weike, M., Ruske, K., Gerndt, R. & Doernbach, T., 2024. Enabling Untrained Users to Shape Real-World Robot Behavior Using an Intuitive Visual Programming Tool in Human-Robot Interaction Scenarios, in International Symposium on Technological Advances in Human-Robot Interaction***.
 
 ## Key components
 - [Node-RED](https://nodered.org/)
