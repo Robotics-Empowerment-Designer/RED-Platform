@@ -78,7 +78,7 @@ The application should now be running (under `http://<host-ip>:1880` or [http://
 ## Usage
 <div align="center">
 
-  ![](images/nodered_usage.mp4)
+https://github.com/Robotics-Empowerment-Designer/RED-Platform/assets/78657761/89bdfe59-5518-4c17-badb-47994e4e9d88
 
 </div>
 
@@ -107,34 +107,31 @@ As already mentioned, each of our nodes is documented.  This documentation is av
   <img width="650" height="auto" src="images/deployment_diagram.png">
 </div>
 
-[comment]: # (Pepper.py aus Diagramm entfernen)
 ### Pepper robot
 The robot consists of two separate systems: the NAOqi broker, which we use to trigger actions on the robot (i.e. to play an animation), and the tablet, which is running Android 5.1.  The only way to programmatically interact with the tablet is through the NAOqi-Broker, which limits the usefulness of the tablet (e.g. it's not possible to detect specific touch events of the tablet or to serve custom web pages that include javascript).
 
-In previous versions, it was necessary to have a custom script ([pepper.py](/pepper/pepper.py)) running on the robot at all times. This was because the recommended way of listening to the robot's events (i.e. face/speech/touch detection) did not work due to a protocol break in libQi. Hence we had to redirect events from the robot to our application. In newer versions (> 1.0) this is no longer necessary.
 ### Docker Host
 The Docker host consists of three main containers: REST-Server, Node-RED and Mosquitto. The REST-Server container contains a Flask WSGI application that in turn exposes our API, which is mainly called by Node-RED. Additionally, it contains a debug page that lists useful information and some quick actions from the robot.
 
 Node-RED acts as a frontend and is mostly responsible for the correct timing of the API calls. Node-RED and our Flask application communicate over Socket.IO (as well as some HTTP calls for configuration information).
 > **Note:**
-> Because we use docker it is important to note, that any changes you make to files inside of the container will only be persistent if this change happens inside of a mapped volume (can be seen in [docker-compose.yml](docker-compose.yml)). Should you make changes to dependencies (i.e. in [/rest-server/requirements.txt](/rest-server/requirements.txt)) you need to rebuild the images with the aforementioned `buildContainer.sh` script.
+> Because we use docker it is important to note, that any changes you make to files inside of the container will only be persistent if this change happens inside of a mapped volume (can be seen in [docker-compose.yml](docker-compose.yml)). Should you make changes to dependencies (i.e. in [/rest-server/requirements.txt](https://github.com/Robotics-Empowerment-Designer/RED-Pepper-Middleware/blob/master/rest-server/requirements.txt)) you need to rebuild the images.
 
 ## Troubleshooting
 Should you encounter issues (i.e. you start a flow but the robot doesn't perform any actions) the best place to start would be the .log file under `/rest-server/<robot-name>.log`. In there you should be able to find some pointers to your issues in the form of warning and error messages.
 
 ### Known/Typical issues
 1. **My robot doesn't do anything!** <br>
-  Make sure your robot is connected to our application. You can check this through the debug site ([localhost:5000](localhost:5000)) or in the log file for `Connection type: Real robot` or `Connection type: Disconnected`. If your robot is not connected to our application make sure that both the system that our application is running on as well as the robot (**both** the robot and the tablet!) are in the same network. Next you should make sure that the robot ip you configured in [.env](./.env)-file is still valid (briefly press the button behind the tablet on peppers chest to get the robot ip). If you're running this project inside of a VM, make sure to use a network bridge instead of NAT.
+  Make sure your robot is connected to our application. You can check this through the debug site ([localhost:5000](localhost:5000)) or in the log file for `Connection type: Real robot` or `Connection type: Disconnected`. If your robot is not connected to our application make sure that both the system that our application is running on as well as the robot (**both** the robot and the tablet!) are in the same network. Next you should make sure that the robot ip you configured in [RED-Platform/pepper/.env](https://github.com/Robotics-Empowerment-Designer/RED-Pepper-Middleware/blob/master/.env)-file is still valid (briefly press the button behind the tablet on peppers chest to get the robot ip). If you're running this project inside of a VM, make sure to use a network bridge instead of NAT.
 2. **After some time the robot doesn't do anything anymore!** <br>
   This is probably caused by one of the following two problems: either your network has connection issues (characterizes by longer processing time for e.g. speech recognition) or the libqi-python library tries to spawn a new thread which causes our application to lose connection to the robot and (currently) be in an unrecoverable state. Should the latter be the case you need to restart the application and refresh Node-RED in your browser.
 3. **I can't install your application!** <br>
-  This is most likely because you're either trying to install our application on Windows or on an arm-based system (e.g. newer Macs, Raspberry Pi). On Windows you should be able to adapt the [buildContainers.sh](./buildContainers.sh) script or perhaps run it through the WSL. As for the arm-based systems you'll need to combile the libqi-python library yourself. You use find a step-by-step guide [here](./CONTRIBUTING.md#test) (feel free to create a pull request in case you're successful). 
+  This is most likely because you're either trying to install our application on Windows or on an arm-based system (e.g. newer Macs, Raspberry Pi).
 
 ## Contributing
 We welcome any contributions (improvements, bug fixes, new features or even additional robot support), just create a pull request!
 Additionally we've created a short [contribution guide](./CONTRIBUTING.md). There you can find instructions on how to create your own nodes for this project as well as additional information on how to create issues an pull requests.
 
-[comment]: # (Kurzanleitung zur Erstellung/Anbindung von Nodes)
 
 [comment]: # (Links)
 [NodeRED-url]: https://nodered.org/
