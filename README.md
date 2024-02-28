@@ -48,7 +48,7 @@ Furthermore, this project is still in its early stages and should therefore only
 1. Clone the repository
 ```sh
   git clone https://github.com/Robotics-Empowerment-Designer/RED-Platform.git
-  cd node-red-standalone
+  cd RED-Platform
 ```
 
 2. Prepare the script and run it
@@ -73,7 +73,7 @@ Furthermore, this project is still in its early stages and should therefore only
 > **Note:**
 > The following documentation assumes that you're using the default port. If you changed the port in the configuration wizard you need to use the respective port instead.
 
-The application should now be running and both the log as well as the debug page (under `http://<flask-ip>:5000` or [http://localhost:5000](http://localhost:5000)) should show `Connection type: Real robot`. If that isn't the case and it says `Connection type: disconnected` the application is running but a connection with the robot couldn't be established. Take a look at the [troubleshooting](#troubleshooting) section for more information.
+The application should now be running (under `http://<host-ip>:1880` or [http://localhost:1880](http://localhost:1880)) and both the log as well as the debug page (under `http://<host-ip>:5000` or [http://localhost:5000](http://localhost:5000)) should show `Connection type: Real robot`. If that isn't the case and it says `Connection type: disconnected` the application is running but a connection with the robot couldn't be established. Take a look at the [troubleshooting](#troubleshooting) section for more information.
 
 ## Usage
 <div align="center">
