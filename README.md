@@ -60,12 +60,14 @@ Furthermore, this project is still in its early stages and should therefore only
 3. Select the robots you want to use (currently only Pepper is supported)
 
 4. After the installation is finished, a configuration wizard to set IPs, ports and other settings should start automatically.
+> **Note:**
+> The most important setting you need to configure is ROBOT_IP_PEPPER, you can leave everything else as it is (just press enter without changing the values). If you want to configure one of the values manually later, you can do this in the corresponding ".env" files (either in RED-Platform/.env or in RED-Platform/pepper/.env).
 
-5. Should any of the operations fail the script will exit. Create an issue if you can't make it work and include the line that it failed on as well as any additional error messages.
+5. Should one of the steps fail, the script will exit. You can run it again. In this case, it will ask you whether it should try to clean up all the changes previously made. If this also fails, try again from the beginning. Create an issue if the script does not work and include the line where it failed and any additional error messages.
 
 6. After the initial setup is finished, the application will start automatically. If you want to start it afterwards **DO NOT** rerun the script, you need to use the following command:
 ```sh
-  docker compose up
+  sudo docker compose up
 ```
 
 <br/>
