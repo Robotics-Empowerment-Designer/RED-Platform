@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # add new robot modules here
-packages=(./nodes/base/ ./nodes/temi/ ./nodes/pepper/)
+packages=(./nodes/base/ ./nodes/pepper/)
 
 for i in "${packages[@]}"
 do
