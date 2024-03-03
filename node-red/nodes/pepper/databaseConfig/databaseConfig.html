@@ -1,6 +1,6 @@
 <script type="text/javascript">
     RED.nodes.registerType("Database config", {
-        category: "Pepper",
+        category: "config",
         defaults: {
             configName: { value: "Config 1", required: true },
             data: { value: [] }
@@ -82,7 +82,8 @@
     });
 </script>
 
-<script type="text/html" data-template-name="Database config">
+<script type="text/html"
+    data-template-name="Database config">
     <template id="databaseConfigTemplate">
         <input type="number" class="custom-id" min="1" max="999" required="true" style="width: 15%;" data-i18n="[placeholder]Database config.id">
         <input type="text" class="custom-name" required="true" style="width: 40%;" data-i18n="[placeholder]Database config.name">
