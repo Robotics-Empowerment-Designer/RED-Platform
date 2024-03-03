@@ -12,8 +12,16 @@ trap 'handle_error $LINENO' ERR
 
 # check if docker-compose.bak exists, if so exit since the script doesn't support being more than once
 if [ -f ./docker-compose.bak ]; then
-    echo "Script has already ran once. It will most likely fail if you run it again. If you want to run it again, delete everything except combine.sh, menu.sh and env_vars.sh and run it again."
-    exit 1
+    # remove the docker-compose.yml file, rename the backup to docker-compose.yml and remove the pepper folder, ask for confirmation first
+    read -p "Script has already been run, do you want to revert the changes so that it can start anew? (y/n)"
+    if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+        rm ./docker-compose.yml
+        mv ./docker-compose.bak ./docker-compose.yml
+        rm -rf ./pepper
+    else
+        echo "Exiting script..."
+        exit 1
+    fi
 fi
 
 #################### PREREQUISITES ####################
@@ -49,8 +57,8 @@ repository_mapping[Pepper]="https://github.com/Robotics-Empowerment-Designer/RED
 
 declare -A env_var_mapping
 
-env_var_mapping[NodeRedBase]="OPENAI_API_KEY NODE_RED_PORT HOSTNAME NODE_RED_LOG_LEVEL PEPPER_REST_SERVER_IP PEPPER_REST_SERVER_PORT TEMI_PORT TEMI_ADDRESS"
-env_var_mapping[Pepper]="QI_LOG_LEVEL MQTT_PORT_PEPPER ROBOT_NAME_PEPPER ROBOT_IP_PEPPER REST_LOG_LEVEL FLASK_IP_PEPPER FLASK_PORT_PEPPER NODE_RED_PORT_PEPPER HOSTNAME"
+env_var_mapping[NodeRedBase]="NODE_RED_PORT HOSTNAME NODE_RED_LOG_LEVEL PEPPER_REST_SERVER_IP PEPPER_REST_SERVER_PORT OPENAI_API_KEY"
+env_var_mapping[Pepper]="ROBOT_IP_PEPPER NODE_RED_PORT_PEPPER QI_LOG_LEVEL MQTT_PORT_PEPPER ROBOT_NAME_PEPPER REST_LOG_LEVEL FLASK_IP_PEPPER FLASK_PORT_PEPPER HOSTNAME"
 # env_var_mapping[Temi]="TEMI_PORT TEMI_ADDRESS" # NYI
 # env_var_mapping[Sawyer]="SAWYER_IP SAWYER_PORT" # NYI
 
