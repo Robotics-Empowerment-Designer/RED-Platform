@@ -72,7 +72,7 @@ multiselect "true" result robot_options preselection # menu logic
 combined_folder_name="node_red"
 idx=0
 for option in "${robot_options[@]}"; do
-    if [[ ${result[idx]} == true ]]; then combined_folder_name+="_${option@L}"; fi # create versionspecific folder name
+    if [[ ${result[idx]} == true ]]; then combined_folder_name+="_${option,,}"; fi # create versionspecific folder name
     ((++idx))
 done
 
@@ -92,14 +92,14 @@ idx=0
 for option in "${robot_options[@]}"; do
 
     if [[ ${result[idx]} == true ]]; then                                                                    # only if the user selected the option
-        git clone --single-branch --branch master "${repository_mapping[$option]}" "./${option@L}" --depth 1 # clone robot specific repo
+        git clone --single-branch --branch master "${repository_mapping[$option]}" "./${option,,}" --depth 1 # clone robot specific repo
 
-        if [ -f "./${option@L}/docker-compose-module.yml" ]; then # only if the cloned repository has the file created specifically for this purpose (i.e. to be used as a module) will we add it
-            path_to_compose_module="./${option@L}/docker-compose-module.yml"
+        if [ -f "./${option,,}/docker-compose-module.yml" ]; then # only if the cloned repository has the file created specifically for this purpose (i.e. to be used as a module) will we add it
+            path_to_compose_module="./${option,,}/docker-compose-module.yml"
             grep -q "include:" docker-compose.yml || printf '%s\n' 1a "include:" . x | ex docker-compose.yml
-            grep -q "${path_to_compose_module}" docker-compose.yml || printf '%s\n' 2a "  - ./${option@L}/docker-compose-module.yml" . x | ex docker-compose.yml
+            grep -q "${path_to_compose_module}" docker-compose.yml || printf '%s\n' 2a "  - ./${option,,}/docker-compose-module.yml" . x | ex docker-compose.yml
 
-            cd "./${option@L}/"
+            cd "./${option,,}/"
             sh ./buildContainers.sh
             cd ..
         else
@@ -124,8 +124,8 @@ idx=0
 for option in "${robot_options[@]}"; do # duplicated, yes but better UX (IMO) => the user configures all the vars after the installation
 
     if [[ "${result[idx]}" == true ]]; then # only if the user selected the option
-        if [ -f ./${option@L}/.env ]; then
-            update_env "./${option@L}/.env" "${env_var_mapping[$option]}" # update env vars
+        if [ -f ./${option,,}/.env ]; then
+            update_env "./${option,,}/.env" "${env_var_mapping[$option]}" # update env vars
         else
             echo "WARNING: .env not found, env vars for ${option} won't be updated."
             read -p "Do you want to continue with the other options? (Y/n) " continue
