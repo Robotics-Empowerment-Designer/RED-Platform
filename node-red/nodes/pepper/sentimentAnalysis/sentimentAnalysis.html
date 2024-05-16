@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Sentiment analysis", {
+        category: "Pepper",
+        color: "#FFCC66",
+        defaults: {
+            language: {
+                value: "German"
+            },
+            text: {
+                value: ""
+            },
+            isAnimated: {
+                value: false
+            }
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: "font-awesome/fa-smile-o",
+        label: () => {
+            return this.name;
+        },
+    });
+</script>
+
+<script type="text/html" data-template-name="Sentiment analysis">
+    
+</script>
+
+<script type="text/html" data-template-text="Sentiment analysis"></script>
