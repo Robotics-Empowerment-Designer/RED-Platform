@@ -1,4 +1,6 @@
 version: "3.7"
+include:
+  - ./pepper/docker-compose-module.yml
 services:
 
   node-red:
