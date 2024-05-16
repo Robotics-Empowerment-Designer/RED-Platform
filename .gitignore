@@ -430,7 +430,7 @@ Backup of *.doc*
 *.~vsd*
 
 **/QR-Codes.pdf
-./pepper/
+pepper
 temi/
 sawyer/
 **/docker-compose.bak
