@@ -6,6 +6,8 @@ const SENTIMENT = Object.freeze({
 })
 
 module.exports = RED => {
+    const fetch = require('node-fetch');
+
     const socket = require("../connection").socket;
     const ConnectionHelper = require("../connectionHelper");
     const EventPubSub = require('node-red-contrib-base/eventPubSub');
@@ -16,41 +18,36 @@ module.exports = RED => {
 
         const ch = new ConnectionHelper(socket, node);
 
-        let waitingNode = null;
-
         node.on("input", () => {
-            waitingNode = msg;
             node.status({ fill: "blue", shape: "dot", text: node.type + "... recording audio ..." });
 
             fetch(sentiment_analysis_endpoint, {
                 method: "POST"
-            }).then(response => {
-                ch.emit("Test", "/robot/tablet/text");
-                /*if (!waitingNode) {
-                    return;
-                }
-    
-                const output = [];
-                Object.values(SENTIMENT).forEach(sentimentComp => {
-                    output.push(sentimentComp === detectedSentiment);
-                });
-    
-                // Falls es nicht funktioniert, ersetzen durch:
-                
-                    Object.values(SENTIMENT).forEach(sentimentComp => {
-                        output.push(sentimentComp === detectedSentiment? true : null)
-                    });
-                           
-    
-                node.send(output);
-    
-                node.send(waitingNode);
-                waitingNode = null;
-                
-                node.status({});*/
             })
+            .then((response) => response.json())
+            .then((jsonResponse) => {
+                // Build Text for Pepper's tablet
+                const detected_speech = `Text: ${jsonResponse.recognizedText}`
+                const detected_sentiment = `Sentiment: ${jsonResponse.sentiment}`
+
+                let concatenated = `${detected_speech}\r\n${detected_sentiment}`;
+
+                concatenated = concatenated.trim().split("\r\n");
+
+                ch.emit(concatenated, "/robot/tablet/text");
+    
+                let output = [];
+
+                Object.values(SENTIMENT).forEach(sentimentComp => {
+                    output.push(sentimentComp === jsonResponse.sentiment? true : null)
+                });
+
+                node.send(output);
+                
+                node.status({});
+            });
         });
     }
 
-    RED.nodes.registerType("Sentiment Analysis", SentimentAnalysis);
+    RED.nodes.registerType("sentiment_analysis", SentimentAnalysis);
 }
