@@ -6,7 +6,7 @@ import logging
 from flask import Flask, Response, jsonify
 from http import HTTPStatus
 
-RECORD_SECONDS = 5 # record duration
+RECORD_SECONDS = 3 # record duration
 PYAUDIO_FORMAT = pyaudio.paInt16  # Resolution: 16-bit
 CHUNK = 1024  # 2^10 buffer samples
 CHANNELS = 1

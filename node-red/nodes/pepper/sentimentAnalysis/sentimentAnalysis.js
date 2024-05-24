@@ -1,4 +1,4 @@
-const sentiment_analysis_endpoint = "http://localhost:5728/sentiment-analysis"
+const sentiment_analysis_endpoint = "http://localhost:5710/sentiment-analysis"
 
 const SENTIMENT = Object.freeze({
     "POSITIVE": "positive",
