@@ -38,8 +38,13 @@ module.exports = RED => {
     
                 let output = [];
 
+                const passedValue = {
+                    payload: {
+                    }
+                }
+
                 Object.values(SENTIMENT).forEach(sentimentComp => {
-                    output.push(sentimentComp === jsonResponse.sentiment? true : null)
+                    output.push(sentimentComp === jsonResponse.sentiment? passedValue : null)
                 });
 
                 node.send(output);

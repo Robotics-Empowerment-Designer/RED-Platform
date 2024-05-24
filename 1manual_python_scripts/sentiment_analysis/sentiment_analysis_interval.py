@@ -6,7 +6,7 @@ import logging
 from flask import Flask, Response, jsonify
 from http import HTTPStatus
 
-RECORD_SECONDS = 3 # record duration
+RECORD_SECONDS = 5 # record duration
 PYAUDIO_FORMAT = pyaudio.paInt16  # Resolution: 16-bit
 CHUNK = 1024  # 2^10 buffer samples
 CHANNELS = 1
@@ -90,8 +90,12 @@ def speech_recognition():
                 "score": sentiment_results.score
             })
         except sr.UnknownValueError:
-            logger.error(CONSOLE_COLOR.ERROR + f"[Error] Speech could not be recognized")
-            return Response(status=HTTPStatus.INTERNAL_SERVER_ERROR)
+            logger.warn(CONSOLE_COLOR.WARNING + f"Speech could not be recognized")
+            return jsonify({
+                "recognizedText": "",
+                "sentiment": "",
+                "score": ""
+            })
         except sr.RequestError as e:
             logger.error(CONSOLE_COLOR.ERROR + f"[Error] RequestError: {e}")
             return Response(status=HTTPStatus.INTERNAL_SERVER_ERROR)

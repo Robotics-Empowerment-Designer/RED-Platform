@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import pyttsx3
 from playsound import playsound
 import time
@@ -29,7 +29,8 @@ def alert_police():
     playsound(ALARM_SOUND_FILE)
     playsound("./" + file_name)
 
-    return ""
+    return jsonify({
+    });
 
 if __name__ == "__main__":
     app.run(debug = True, host="0.0.0.0", port=5730)
