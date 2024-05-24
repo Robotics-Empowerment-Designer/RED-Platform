@@ -25,7 +25,8 @@
             "waitForKeyword": "waitForKeyword/waitForKeyword.js",
 	        "waitForQR": "waitForQR/waitForQR.js",
             "grip": "grip/grip.js",
-            "sentimentAnalysis": "sentimentAnalysis/sentimentAnalysis.js"
+            "sentimentAnalysis": "sentimentAnalysis/sentimentAnalysis.js",
+            "recognizeKeyword": "recognizeKeyword/recognizeKeyword.js"
         }
     },
     "dependencies": {
