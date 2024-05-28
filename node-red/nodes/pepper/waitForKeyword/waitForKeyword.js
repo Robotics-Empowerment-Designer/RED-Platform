@@ -65,6 +65,7 @@ module.exports = RED => {
             const output = new Array(config.keywords.length).fill(null);
             const index = config.keywords.indexOf(keyword);
 
+            node.waitingNode.payload = keyword;
             output[index] = node.waitingNode;
 
             node.send(output);
