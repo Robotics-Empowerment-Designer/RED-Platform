@@ -1,0 +1,118 @@
+<script type="text/javascript">
+    RED.nodes.registerType("recognize_keyword", {
+        category: "Pepper",
+        color: "#FFCC66",
+        defaults: {
+            keywords: {
+                value: ["Hallo Pepper"]
+            },
+            outputs: {
+                value: 1
+            }
+        },
+        inputs: 1,
+        icon: "font-awesome/fa-smile-o",
+        label: () => {
+            return this.name;
+        },
+        oneditprepare: function () {
+            const node = this;
+            const list = $("#node-input-keyword-list");
+            const detectionFailedList = $("#node-input-failed-inquire-list");
+            const templateHtml = $("#keywordTemplate").html();
+            const templateDetectionFailedHtml = $("#detectionFailedInquireTemplate").html();
+
+            list.editableList({
+                addButton: node._(node.type + ".addItem"),
+                removable: true,
+                sortable: true,
+                addItem: (row, index, data) => {
+                    $(row).html(templateHtml);
+
+                    if (jQuery.isEmptyObject(data)) {
+                        $(row).find(".custom-keyword")[0].value = "";
+                        return;
+                    }
+
+                    $(row).find(".custom-keyword")[0].value = data;
+                }
+            });
+
+            if (node.keywords.length === 0) {
+                list.editableList("addItem", "");
+            }
+
+            node.keywords.forEach(keyword => {
+                list.editableList("addItem", keyword);
+            });
+        },
+        oneditsave: function () {
+            const node = this;
+
+            const list = $("#node-input-keyword-list");
+            const detectionFailedList = $("#node-input-failed-inquire-list");
+            node.keywords = [];
+            node.detectionFailedInquires = [];
+
+            const items = $("#node-input-keyword-list").editableList("items");
+            Array.from(items).forEach(row => {
+                const item = $(row).find(".custom-keyword")[0].value;
+
+                if (item === "") {
+                    RED.notify(node._(node.type + ".deletedEmptydRows"), { type: "warning", timeout: 5000 });
+                    return;
+                }
+
+                if (node.keywords.includes(item)) {
+                    RED.notify(node._(node.type + ".deletedDuplicatedEntries"), { type: "warning", timeout: 5000 });
+                    return;
+                }
+                node.keywords.push(item);
+            });
+
+            if (node.keywords.length === 0) {
+                node.keywords = [node._(node.type + ".default")];
+                list.editableList("addItem", node.keywords[0]);
+            }
+
+            const detectionFailedItems = $("#node-input-failed-inquire-list").editableList("items");
+            Array.from(detectionFailedItems).forEach(row => {
+                const item = $(row).find(".custom-detection-failed-inquire")[0].value;
+
+                if (item === "") {
+                    RED.notify(node._(node.type + ".deletedEmptydRows"), { type: "warning", timeout: 5000 });
+                    return;
+                }
+
+                if (node.detectionFailedInquires.includes(item)) {
+                    RED.notify(node._(node.type + ".deletedDuplicatedEntries"), { type: "warning", timeout: 5000 });
+                    return;
+                }
+                node.detectionFailedInquires.push(item);
+            });
+
+            setTimeout(function () {
+                if (node.timeout !== null && node.timeout > 0) {
+                    node.outputs = node.keywords.length + 1;
+                    node.outputLabels = [...node.keywords, node._(node.type + ".timeoutOutput")];
+                } else {
+                    node.outputs = node.keywords.length + 1;
+                    node.outputLabels = node.keywords;
+                }
+            }, 0);
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="recognize_keyword">
+    <template id="keywordTemplate">
+        <input type="text" class="custom-keyword" placeholder="Keyword" required="true">
+    </template>
+
+    <div class="form-row">
+        <label for="node-input-keyword-list" style="width: 100%"><i class="fa fa-comments"></i></span> Keywords:</label>
+        <ol id="node-input-keyword-list"></ol>
+    </div>
+</script>
+
+<script type="text/html" data-template-text="recognize_keyword"></script>
