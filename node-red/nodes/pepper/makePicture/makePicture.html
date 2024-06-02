@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType("Make Picture", {
+        category: "Pepper",
+        color: "#FFCC66",
+        defaults: {
+            camera: {value:"0", required:true},
+            output: {value:"base64", required:true},
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-camera",
+        label: () => {
+        	return this.name
+        },
+        oneditprepare: function() {
+            $("#node-input-camera").val(this.camera);
+            $("#node-input-output").val(this.output);
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="Make Picture">
+    <div class="form-row">
+        <label for="node-input-camera">
+            <span data-i18n="MakePicture.takingPicture"></span>
+        </label>
+        <select id="node-input-camera">
+            <option value="0" data-i18n="MakePicture.bottom"></option>
+            <option value="1" data-i18n="MakePicture.top"></option>    
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-output">
+            <span data-i18n="MakePicture.outputFormat"></span>
+        </label>
+        <select id="node-input-output">
+            <option value="raw">Raw</option>
+            <option value="base64">Base64</option>    
+        </select>
+    </div>
+</script>
